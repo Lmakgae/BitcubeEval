@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "BitcubeEval"
+    }
+  },
+  "defaultProject": "BitcubeEval",
+  "cli": {
+    "analytics": "c7f421c5-4c8f-4625-bb9d-16c38267ed0c"
+  }
 }
