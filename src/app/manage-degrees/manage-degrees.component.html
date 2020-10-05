@@ -1,0 +1,91 @@
+<div class="container">
+  <h1 class="mat-h1">Manage Degrees</h1>
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>
+        Degrees
+        <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <table mat-table class="full-width-table" matSort aria-label="Elements" multiTemplateDataRows>
+
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+            <td mat-cell *matCellDef="let element">{{element.id}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+            <td mat-cell *matCellDef="let element">{{element.name}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="duration">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Duration (years)</th>
+            <td mat-cell *matCellDef="let element">{{element.duration}}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="lecturer_name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Lecturer Name</th>
+            <td mat-cell *matCellDef="let element">{{getLecturerName(element.lecturerID)}}</td>
+          </ng-container>
+
+          <!-- <ng-container matColumnDef="more" stickyEnd>
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+              <mat-icon style="cursor: pointer; z-index: 10;" [mat-menu-trigger-for]="editRow" (click)="setId(element.id)">more_vert</mat-icon>
+            </td>
+          </ng-container> -->
+
+          <mat-menu #editRow="matMenu" yPosition=below >
+            <button mat-menu-item (click)="editDegree()">
+              <mat-icon>edit</mat-icon>
+              <span>Edit Degree</span>
+            </button>
+            <button mat-menu-item (click)="deleteDegree()">
+              <mat-icon>delete</mat-icon>
+              <span>Remove Degree</span>
+            </button>
+          </mat-menu>
+
+          <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+          <ng-container matColumnDef="expandedDetail">
+            <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+              <div class="element-detail"
+                  [@detailExpand]="element === expandedElement ? 'expanded' : 'collapsed'">
+                  <app-degree-courses [degreeID]="element.id" [degreeName]="element.name"></app-degree-courses>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+              class="element-row"
+              [class.expanded-row]="expandedElement === element"
+              (click)="expandedElement = expandedElement === element ? null : element">
+          </tr>
+          <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+
+
+        </table>
+
+        <mat-paginator #paginator
+            [length]="dataSource?.data.length"
+            [pageIndex]="0"
+            [pageSize]="50"
+            [pageSizeOptions]="[25, 50, 100, 250]">
+        </mat-paginator>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+

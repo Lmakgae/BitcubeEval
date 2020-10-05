@@ -1,0 +1,42 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+mat-toolbar {
+  position: fixed;
+  z-index: 100;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+mat-toolbar button {
+  border: none;
+  background-color: transparent;
+  color: white;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+mat-toolbar mat-nav-list {
+  position: relative;
+  margin: 0;
+  padding: 0 0;
+}
+
+.sidenav-content {
+  padding-top: 64px;
+}
+
+.sidenav-container {
+  /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+     causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+  flex: 1;
+}

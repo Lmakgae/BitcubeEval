@@ -1,0 +1,29 @@
+.full-width-table {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: relative;
+}
+
+.add-button {
+  position: absolute;
+  top: 12px;
+  right: 60px;
+}
+
+.more-button {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}

@@ -1,0 +1,44 @@
+.full-width-table {
+  width: 100%;
+}
+
+.container {
+  margin: 20px;
+}
+
+.card {
+  position: relative;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+  cursor: pointer;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+app-degree-courses {
+  width: 90%;
+}
+

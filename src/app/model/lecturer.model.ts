@@ -1,19 +1,22 @@
-import { Degree } from './degree.model';
 import { Person } from './person.model';
 
 export class Lecturer extends Person {
 
+  private degreeIDs: string[];
+
   constructor(
+    id: string,
     forenames: string,
     surname: string,
     email: string,
-    dateOfBirth: string,
-    private degrees: Degree[]) {
-    super(forenames, surname, email, dateOfBirth);
+    dateOfBirth: number,
+    degreeIDs?: string[]) {
+    super(id, forenames, surname, email, dateOfBirth);
+    this.degreeIDs = degreeIDs;
   }
 
-  getDegrees(): Degree[] {
-    return this.degrees;
+  getDegreeIDs(): string[] {
+    return this.degreeIDs;
   }
 
 }

@@ -1,0 +1,24 @@
+.full-width-table {
+  width: 100%;
+}
+
+.grid-container {
+  margin: 20px;
+}
+
+.card {
+  position: relative;
+  z-index: 0;
+}
+
+.add-button {
+  position: absolute;
+  top: 12px;
+  right: 60px;
+}
+
+.more-button {
+  position: absolute;
+  top: 9px;
+  right: 10px;
+}

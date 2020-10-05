@@ -1,0 +1,66 @@
+<form [formGroup]="addStudentForm" novalidate (ngSubmit)="onAddUser()">
+  <mat-card-header>
+    <mat-card-title>Add Student</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Forenames" formControlName="foreNames">
+          <mat-error *ngIf="addStudentForm.controls['foreNames'].hasError('required')">
+            Forenames are <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Surname" formControlName="surname">
+          <mat-error *ngIf="addStudentForm.controls['surname'].hasError('required')">
+            Surname is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput placeholder="Email" formControlName="email">
+          <mat-error *ngIf="addStudentForm.controls['email'].hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="addStudentForm.controls['email'].hasError('email')">
+            Email is <strong>incorrect</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <mat-form-field class="full-width">
+          <input matInput [max]="maxDate" [matDatepicker]="picker" placeholder="Date of Birth" formControlName="dateOfBirth" disabled>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="multi-year" disabled="false"></mat-datepicker>
+          <mat-error *ngIf="addStudentForm.controls['dateOfBirth'].hasError('required')">
+            Date of birth is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="col">
+        <mat-form-field class="full-width">
+          <mat-select placeholder="Degree" formControlName="degree">
+            <mat-option *ngFor="let degree of degrees" [value]="degree.getId()">
+              {{ degree.getName() }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="addStudentForm.controls['degree'].hasError('required')">
+            Degree is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-flat-button mat-dialog-close>Cancel</button>
+    <button mat-flat-button color="primary" type="submit">Add Student</button>
+  </mat-card-actions>
+</form>

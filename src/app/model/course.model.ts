@@ -1,13 +1,15 @@
-import { Degree } from './degree.model';
+import { BaseModel } from './base.model';
 
-export class Course {
+export class Course extends BaseModel {
 
   constructor(
+    id: string,
     private name: string,
     private duration: number,
     // private courses: Course[], --- The instructions stipulates that there should be one of more courses that is part of this degree (Which I think it was a mistake and meant for the degree object)
-    private degree: Degree
-  ){}
+    private degreeID: string){
+      super(id);
+  }
 
   getName(): string {
     return this.name;
@@ -17,8 +19,8 @@ export class Course {
     return this.duration;
   }
 
-  getDegree(): Degree {
-    return this.degree;
+  getDegreeID(): string {
+    return this.degreeID;
   }
 
 }

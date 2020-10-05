@@ -1,14 +1,14 @@
-import { Course } from './course.model';
-import { Lecturer } from './lecturer.model';
+import { BaseModel } from './base.model';
 
-export class Degree {
+export class Degree extends BaseModel {
 
   constructor(
+    id: string,
     private name: string,
     private duration: number,
-    private lecturer: Lecturer,
-    private courses: Course[],
-  ){}
+    private lecturerID: string){
+      super(id);
+  }
 
   getName(): string {
     return this.name;
@@ -18,12 +18,8 @@ export class Degree {
     return this.duration;
   }
 
-  getCourses(): Course[]{
-    return this.courses;
-  }
-
-  getLecturer(): Lecturer {
-    return this.lecturer;
+  getLecturerID(): string {
+    return this.lecturerID;
   }
 
 }
