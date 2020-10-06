@@ -19,7 +19,7 @@ export class ManageStudentsComponent implements AfterViewInit, OnInit, OnDestroy
   @ViewChild(MatTable) table: MatTable<Student>;
   dataSource: MatTableDataSource<Student>;
   displayedColumns = ['id', 'firstName', 'surname', 'email', 'dateofbirth', 'degreeID', 'more'];
-  id: string;
+  selectedStudentID: string;
   private dataSub: Subscription;
 
   constructor(
@@ -60,16 +60,20 @@ export class ManageStudentsComponent implements AfterViewInit, OnInit, OnDestroy
   }
 
   setId(id: string): void {
-    this.id = id;
+    this.selectedStudentID = id;
   }
 
   editStudent(): void {
   }
 
   deleteStudent(): void {
+    this.dataService.deleteStudent(this.selectedStudentID);
+    this.dataService.getStudentsForLecturer(this.dataService.getSignedInLecturer().getDegreeIDs());
   }
 
   openAddStudentDialog(): void {
-    this.dialog.open(AddStudentDialogComponent);
+    this.dialog.open(AddStudentDialogComponent, {
+      data: { degreeID: null }
+    });
   }
 }

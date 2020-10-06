@@ -9,6 +9,7 @@ import { ManageStudentsComponent } from './manage-students/manage-students.compo
 import { AddStudentDialogComponent } from './manage-students/add-student-dialog/add-student-dialog.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SignInComponent } from './sign-in/sign-in.component';
+import { RemoveStudentDialogComponent } from './manage-students/remove-student-dialog/remove-student-dialog.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
     DashboardComponent,
     ManageStudentsComponent,
     AddStudentDialogComponent,
-    SignInComponent
+    SignInComponent,
+    RemoveStudentDialogComponent
   ],
   imports: [
     BrowserModule,

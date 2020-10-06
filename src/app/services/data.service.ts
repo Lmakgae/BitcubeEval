@@ -184,4 +184,14 @@ export class DataService {
     this.studentsData.push(student);
   }
 
+  deleteStudent(studentID: string): void {
+    for (let index = 0; index < this.studentsData.length; index++) {
+      if (this.studentsData[index].getId() === studentID) {
+        this.studentsData.splice(index, 1);
+        return;
+      }
+    }
+    this.studentsUpdated.next([...this.studentsData]);
+  }
+
 }

@@ -1,0 +1,13 @@
+<h2>Select the student to remove from {{degreeName}}</h2>
+<mat-dialog-content class="mat-typography">
+  <mat-nav-list>
+    <mat-list-item *ngFor="let student of studentList; index as i" (click)="deleteStudent(i)">
+      <mat-icon mat-list-icon>person</mat-icon>
+      <div mat-line>{{student.getFullName()}}</div>
+      <div mat-line> {{student.dateOfBirth | date}} </div>
+    </mat-list-item>
+  </mat-nav-list>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
